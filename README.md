@@ -1,6 +1,6 @@
 # BIST Aracı Kurumlar Pazar Payı ve Rekabet Analizi (Mart 2026)
 
-Bu çalışma Borsa İstanbul (BIST) ekosistemindeki aracı kurumların işlem hacimlerini kullanarak pazarın rekabet yapısını ve yoğunlaşma dinamiklerini analiz eden ileri düzey bir veri analitiği projesidir.
+Bu çalışma Borsa İstanbul (BIST) ekosistemindeki aracı kurumların işlem hacimlerini kullanarak pazarın rekabet yapısını ve yoğunlaşma dinamiklerini analiz eden ileri düzey bir veri analitiği projesidir..
 
 ##  Proje Özeti
 Proje, Mart 2026 dönemine ait işlem hacmi verileri üzerinden piyasadaki "Büyük Balık" etkisini ve pazarın ne kadar rekabetçi olduğunu bilimsel metriklerle (HHI, Pareto) ortaya koymaktadır.
