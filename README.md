@@ -37,7 +37,6 @@ Bu projede TÜİK ve TCMB EVDS veri kaynakları bir araya getirilerek ilişkisel
 ---
 
 ## Proje Dizini
-```text
 ├── data/
 │   ├── raw/                 # TÜİK ve TCMB kaynaklı ham veriler
 │   └── processed/           # SQLite veritabanı ve temizlenmiş tablolar
@@ -51,6 +50,7 @@ Bu projede TÜİK ve TCMB EVDS veri kaynakları bir araya getirilerek ilişkisel
 ├── figures/                 # Dashboard ekran görüntüleri ve SQL çıktıları
 ├── requirements.txt         # Python kütüphane bağımlılıkları
 └── README.md                # Proje dokümantasyonu
+
 Kurulum ve İnceleme
 Depoyu yerel ortamınıza klonlayın:
 
