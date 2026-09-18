@@ -53,19 +53,21 @@ Bu projede TÜİK ve TCMB EVDS veri kaynakları bir araya getirilerek ilişkisel
 └── README.md                # Proje dokümantasyonu
 ```
 
-Kurulum ve İnceleme
-Depoyu yerel ortamınıza klonlayın:
+## Hızlı Başlangıç & İnceleme
 
-Bash
-git clone [https://github.com/resulcanca/regional-economic-intelligence.git](https://github.com/resulcanca/regional-economic-intelligence.git)
-cd regional-economic-intelligence
-SQL sorgularını çalıştırmak için SQLite ortamını başlatın:
+| Adım | İşlem | Detay |
+| :--- | :--- | :--- |
+| **1. Repoyu Al** | `git clone https://github.com/resulcanca/regional-economic-intelligence.git` | Proje dosyalarını yerel ortama çeker. |
+| **2. Veritabanı** | `data/processed/economic_intelligence.db` | SQLite üzerinde doğrudan incelenebilir. |
+| **3. SQL Analizleri** | `sql/30_business_queries.sql` | Window functions & CTE analiz sorgularını içerir. |
+| **4. Raporlama** | `powerbi/regional_intelligence.pbix` | Power BI Desktop ile panoyu tam ekran açın. |
 
-Bash
-sqlite3 data/processed/economic_intelligence.db < sql/30_business_queries.sql
-Dashboard'u görüntülemek için powerbi/regional_intelligence.pbix dosyasını Power BI Desktop üzerinde açın.
+---
 
-İletişim
-Resul Canca — LinkedIn • Kaggle • Medium
+## İletişim & Ağ
 
-E-posta: resulcanca@gmail.com
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Resul_Canca-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/resulcanca)
+[![GitHub](https://img.shields.io/badge/GitHub-resulcanca-181717?style=flat&logo=github&logoColor=white)](https://github.com/resulcanca)
+[![Kaggle](https://img.shields.io/badge/Kaggle-resulcanca-20BEFF?style=flat&logo=kaggle&logoColor=white)](https://kaggle.com/resulcanca)
+[![Medium](https://img.shields.io/badge/Medium-@resulcanca-000000?style=flat&logo=medium&logoColor=white)](https://medium.com/@resulcanca)
+[![Email](https://img.shields.io/badge/E--posta-resulcanca@gmail.com-D14836?style=flat&logo=gmail&logoColor=white)](mailto:resulcanca@gmail.com)
