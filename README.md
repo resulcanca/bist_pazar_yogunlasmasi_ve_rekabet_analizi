@@ -1,43 +1,69 @@
-# BIST Aracı Kurumlar Pazar Payı ve Rekabet Analizi
+# Türkiye Regional Economic Intelligence (Karar Destek Modeli)
 
-Borsa İstanbul (BIST) bünyesinde faaliyet gösteren aracı kurumların işlem hacmi verilerini kullanarak pazar yoğunlaşmasını, rekabet seviyesini ve hacim dağılımını ölçen uçtan uca veri analitiği projesi.
+Türkiye'nin 26 NUTS-2 ekonomik bölgesine ait TÜİK ve TCMB makroekonomik göstergelerini konsolide eden, SQL tabanlı analitik modelleme ve Power BI gösterge paneli ile bölgesel yatırım ve büyüme potansiyelini ölçen karar destek projesi.
 
 ---
 
 ## Proje Özeti & İş Problemi
-Finansal piyasalarda aracı kurumların pazar gücünü ve sektördeki tekel/oligopol risklerini analiz etmek; sermaye piyasalarının derinliğini ve likidite dağılımını anlamak için kritik öneme sahiptir. 
+Bölgesel kalkınma dinamikleri, gelir dağılımı ve barınma/kira maliyeti baskısı gibi faktörler yatırımların coğrafi dağılımında kritik rol oynar. Ancak kamuya açık verilerin parçalı ve farklı formatlarda olması, bütünleşik bir karar destek mekanizması kurmayı zorlaştırır.
 
-Bu çalışmada, resmi BIST işlem hacmi verileri işlenerek sektörün rekabet yapısı endüstri standardı iktisadi göstergeler ve istatistiksel segmentasyon yöntemleriyle incelenmiştir.
-
----
-
-## Kullanılan Teknolojiler & Kütüphaneler
-- **Python:** Veri manipülasyonu ve modelleme
-- **Pandas & NumPy:** Veri temizleme, agregasyon ve metrik hesaplama
-- **Plotly & Matplotlib:** İnteraktif dağılım ve konsantrasyon grafikleri
-- **Jupyter Notebook:** Analiz ve dokümantasyon ortamı
+Bu projede TÜİK ve TCMB EVDS veri kaynakları bir araya getirilerek ilişkisel bir veri tabanında (SQLite) modellenmiş; ileri düzey SQL sorguları ile 30 kritik iş sorusu yanıtlanmış ve karar alıcılar için türetilmiş bir **Ekonomik Çekicilik Skoru** geliştirilmiştir.
 
 ---
 
-## Metodoloji & Analitik Yöntemler
-1. **Veri Temizleme & Ön İşleme:** Hacim serilerindeki aykırı değerlerin kontrolü, eksik veri analizi ve kurum bazlı gruplama.
-2. **Herfindahl-Hirschman Endeksi (HHI):** Pazar yoğunlaşma derecesini ve tekel riskini ölçmek için her kurumun pazar payı karesi toplanarak HHI skoru türetildi.
-3. **Pareto (80/20) Analizi:** Kümülatif işlem hacminin %80'ini üreten kritik kurum havuzu belirlendi.
-4. **Katmanlı Segmentasyon (Tier 1 / Tier 2 / Tier 3):** İşlem hacmi ve pazar payı ağırlıklarına göre sektör oyuncuları 3 ana segmente ayrıldı.
+## Kullanılan Teknolojiler & Beceriler
+- **Veri Modelleme & Analiz:** SQL (SQLite) — CTE (Common Table Expressions), Window Functions (`RANK`, `DENSE_RANK`, `NTILE`, `PERCENT_RANK`), Subqueries, Multi-table JOINs, Aggregations
+- **Veri Manipülasyonu & ETL:** Python, Pandas, NumPy
+- **İş Zekası & Görselleştirme:** Power BI, DAX (KPI Hesaplamaları, Dinamik Filtreleme), İleri Düzey Excel
+- **Versiyon Kontrolü:** Git, GitHub
 
 ---
 
-## Temel Bulgular (Key Insights)
-- **Konsantrasyon Düzeyi:** Sektörün HHI skoru incelendiğinde pazarın dengeli/rekabetçi bir yapı sergilediği, tek bir aktörün aşırı piyasa hakimiyeti kurmadığı gözlemlendi.
-- **Pareto Dağılımı:** Toplam işlem hacminin yaklaşık %80'lik kısmının piyasadaki kurumların ilk %20'si tarafından domine edildiği doğrulandı.
-- **Segment Dağılımı:** Kurumlar hacim büyüklüklerine göre Tier 1 (Pazar Liderleri), Tier 2 (Orta Ölçekli Büyüme Odaklılar) ve Tier 3 (Niş/Düşük Hacimliler) olarak sınıflandırıldı.
+## Analitik Metodoloji & SQL Mimarisi
+1. **Veri Konsolidasyonu & Modelleme:** 26 NUTS-2 bölgesi için nüfus, kişi başı GSYH, işsizlik, konut satışları ve tüketici fiyat endeksi gibi göstergeler tekilleştirilerek ilişkisel şemaya dönüştürüldü.
+2. **İleri Seviye SQL Sorgu Tasarımı:**
+   - Pencere fonksiyonları (Window Functions) ile bölgeler arası kümülatif pay ve yüzdelik dilim (percentile) hesaplamaları.
+   - CTE yapıları ile bölgesel büyüme oranlarının periyodik kıyaslanması.
+3. **Ekonomik Çekicilik Skoru (Metrik Türetme):** Gelir artış ivmesi, sanayi/ticaret hacmi ile konut ve kira baskısı ağırlıklandırılarak her bölge için normalize edilmiş bir çekicilik skoru formüle edildi.
+4. **Power BI Dashboard:** Karar vericilerin bölgeleri filtreleyebileceği, metrikleri dinamik olarak karşılaştırabileceği interaktif arayüz kurgulandı.
 
 ---
 
-## Proje Yapısı
+## Temel Bulgular & İçgörüler
+- **Bölgesel Ayrışma:** Batı metropollerinde kişi başı gelir yüksek olmasına rağmen konut ve maliyet baskısı neticesinde göreli çekicilik skorunun orta Anadolu üretim havzalarına doğru kaydığı tespit edildi.
+- **Konsantrasyon Analizi:** Ekonomik katma değerin ve finansal hacmin belirli bölgelerde kümelendiği `NTILE` ve `PERCENT_RANK` analizleriyle doğrulandı.
+- **İş Kararı Desteği:** Türetilen skorlama modeli; bölgesel yatırım dağılımı, depo/tesis lokasyon seçimi ve hedef pazar analizleri için doğrudan referans metrik haline getirildi.
+
+---
+
+## Proje Dizini
 ```text
-├── data/               # Ham ve işlenmiş veri setleri
-├── notebooks/          # Analiz ve görselleştirme adımlarını içeren Jupyter Notebook
-├── figures/            # Üretilen grafik ve görselleştirmeler
-├── requirements.txt    # Gerekli Python kütüphaneleri
-└── README.md           # Proje dokümantasyonu
+├── data/
+│   ├── raw/                 # TÜİK ve TCMB kaynaklı ham veriler
+│   └── processed/           # SQLite veritabanı ve temizlenmiş tablolar
+├── sql/
+│   ├── schema.sql           # Tablo yapıları ve ilişkiler
+│   └── 30_business_queries.sql # Window functions ve CTE içeren analitik sorgular
+├── powerbi/
+│   └── regional_intelligence.pbix # Power BI Dashboard dosyası
+├── notebooks/
+│   └── etl_pipeline.ipynb   # Veri temizleme ve dönüştürme adımları
+├── figures/                 # Dashboard ekran görüntüleri ve SQL çıktıları
+├── requirements.txt         # Python kütüphane bağımlılıkları
+└── README.md                # Proje dokümantasyonu
+Kurulum ve İnceleme
+Depoyu yerel ortamınıza klonlayın:
+
+Bash
+git clone [https://github.com/resulcanca/regional-economic-intelligence.git](https://github.com/resulcanca/regional-economic-intelligence.git)
+cd regional-economic-intelligence
+SQL sorgularını çalıştırmak için SQLite ortamını başlatın:
+
+Bash
+sqlite3 data/processed/economic_intelligence.db < sql/30_business_queries.sql
+Dashboard'u görüntülemek için powerbi/regional_intelligence.pbix dosyasını Power BI Desktop üzerinde açın.
+
+İletişim
+Resul Canca — LinkedIn • Kaggle • Medium
+
+E-posta: resulcanca@gmail.com
